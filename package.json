@@ -1,0 +1,53 @@
+{
+  "name": "nantucket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/start.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "big.js": "^5.2.2",
+    "dotenv": "^8.2.0",
+    "ethereumjs-tx": "^2.1.2",
+    "ethers": "^5.0.8",
+    "node-fetch": "^2.6.1",
+    "pg": "^8.2.2",
+    "web3": "^1.2.11",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@openzeppelin/cli": "^2.8.2",
+    "@openzeppelin/contracts": "^3.0.2",
+    "@truffle/hdwallet-provider": "^1.0.35",
+    "@uniswap/lib": "^1.1.2",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "chai": "^4.2.0",
+    "ganache-cli": "^6.9.1",
+    "mocha": "^7.2.0"
+  },
+  "optionalDependencies": {},
+  "scripts": {
+    "nantucket": "node './src/start' '../config.json'",
+    "nantucket-test": "node './src/start' '../config.test.json'",
+    "db-create": "createdb FlashLoanLiquidation",
+    "db-initialize": "psql --echo-errors -f './scripts/database/initialize.sql' FlashLoanLiquidation",
+    "db-create-views": "psql --echo-errors -f './scripts/database/views.sql' FlashLoanLiquidation",
+    "db-populate": "node './scripts/database/populate.js'",
+    "test": "mocha --file './tests/setup.js' 'tests/**/*.test.js' --recursive",
+    "test-database": "mocha --file './tests/setup.js' 'tests/database/**/*.test.js' --recursive",
+    "test-logging": "mocha --file './tests/setup.js' 'tests/logging/**/*.test.js' --recursive",
+    "test-messaging": "mocha --file './tests/setup.js' 'tests/messaging/**/*.test.js' --recursive",
+    "test-network": "mocha --file './tests/setup.js' 'tests/network/**/*.test.js' --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenshively/Nantucket.git"
+  },
+  "author": "Hayden Shively",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haydenshively/Nantucket/issues"
+  },
+  "homepage": "https://github.com/haydenshively/Nantucket#readme"
+}
